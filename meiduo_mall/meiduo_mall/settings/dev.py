@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'meiduo_mall.apps.users.apps.UsersConfig',
     'rest_framework',
+    # 'meiduo_mall.apps.users.models.User'
 ]
 
 MIDDLEWARE = [
@@ -201,4 +202,7 @@ REST_FRAMEWORK = {
     # 异常处理
     'EXCEPTION_HANDLER': 'meiduo_mall.utils.exceptions.exception_handler',
 }
+
+# 设置自定义模型类/User
+AUTH_USER_MODEL = 'users.User'
 
