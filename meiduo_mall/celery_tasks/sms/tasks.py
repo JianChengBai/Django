@@ -1,6 +1,6 @@
 import logging
 
-from meiduo_mall.celery_tasks.main import app
+from celery_tasks.main import app
 
 from .yuntongxun.sms import CCP
 
