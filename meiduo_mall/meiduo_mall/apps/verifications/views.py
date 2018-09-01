@@ -29,7 +29,8 @@ class SMSCodeView(APIView):
 
         try:
             # 发送短信的异步任务必须通过delay调用
-            tasks.send_sms_code.delay(mobile, sms_code)
+            print("第一步")
+            tasks.send_sms_code.delay(mobile, sms_code, 5)
 
         except Exception as e:
             # 发送短信失败, 记录错误信息到日志中

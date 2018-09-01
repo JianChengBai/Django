@@ -9,6 +9,8 @@ logger = logging.getLogger("django")
 # 验证码短信模版
 SMS_CODE_TEMP_ID = 1
 
+print("sdfsd ")
+
 
 @app.task(name='send_sms_code')
 def send_sms_code(mobile, code, expires):
@@ -21,8 +23,8 @@ def send_sms_code(mobile, code, expires):
     """
     try:
         cpp = CCP()
-        result= cpp.send_template_sms(mobile, [code, expires], SMS_CODE_TEMP_ID)
-
+        result = cpp.send_template_sms(mobile, [code, expires], SMS_CODE_TEMP_ID)
+        print(result)
     except Exception as e:
         logger.error("发送验证码短信[异常][mobile: %s, message: %s]" % (mobile, e))
 
