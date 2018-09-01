@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'meiduo_mall.apps.users.apps.UsersConfig',
+
     'rest_framework',
     'corsheaders',
-    # 'meiduo_mall.apps.users.models.User'
+
+    'verifications.apps.VerificationsConfig',
+    'users.apps.UsersConfig',
+
+
 ]
 
 MIDDLEWARE = [
