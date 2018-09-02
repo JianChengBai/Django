@@ -151,6 +151,7 @@ var vm = new Vue({
                 .catch(error => {
                     if (error.response.status == 400) {
                         // 展示发送短信错误提示
+                        console.log(error.response.data.message);
                         this.error_sms_code = true;
                         this.error_sms_code_message = error.response.data.message;
                     } else {

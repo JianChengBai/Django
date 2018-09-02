@@ -9,8 +9,6 @@ logger = logging.getLogger("django")
 # 验证码短信模版
 SMS_CODE_TEMP_ID = 1
 
-print("sdfsd ")
-
 
 @app.task(name='send_sms_code')
 def send_sms_code(mobile, code, expires):

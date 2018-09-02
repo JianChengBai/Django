@@ -2,6 +2,7 @@ import re
 
 from django_redis import get_redis_connection
 from rest_framework import serializers
+from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
 from users.models import User
@@ -45,10 +46,28 @@ class CreateUserSerializer(serializers.ModelSerializer):
             }
         }
 
+    # def validate_username(self, value):
+    #
+    #     username = User.objects.get(value['username'])
+    #
+    #     if username:
+    #         return Response({'用户名已被注册'})
+    #     else:
+    #
+    #         return value
+
     def validate_mobile(self, value):
         """验证手机号"""
         if not re.match(r'^1[3-9]\d{9}$', value):
             raise serializers.ValidationError('手机号格式错误')
+        return value
+
+    def validate_allow(self, value):
+        """检验用户是否同意协议"""
+        if value != 'true':
+
+            raise serializers.ValidationError('请同意用户协议')
+
         return value
 
     def validate(self, data):
@@ -91,12 +110,12 @@ class CreateUserSerializer(serializers.ModelSerializer):
         user.save()
 
         # 补充生成记录登录状态的token
-        jwt_payload_headler = api_settings.JWT_PAYLOAD_HANDLER
-        jwt_encode_headler = api_settings.JWT_ENCODE_HANDLER
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
-        payload = jwt_payload_headler(user)
+        payload = jwt_payload_handler(user)
 
-        token = jwt_encode_headler(payload)
+        token = jwt_encode_handler(payload)
 
         user.token = token
 
