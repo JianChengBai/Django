@@ -16,12 +16,6 @@ class SMSCodeView(APIView):
 
     def get(self, request, mobile):
 
-        count = User.objects.filter(mobile=mobile).count()
-
-        if count > 0:
-
-            return Response({"message": "该手机号已注册"}, status=status.HTTP_400_BAD_REQUEST)
-
         # 1创建连接到redis的对象
         redis_conn = get_redis_connection('verify_codes')
 

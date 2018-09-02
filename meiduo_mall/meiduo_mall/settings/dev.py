@@ -28,7 +28,7 @@ SECRET_KEY = '+mc^720_3yc=(rtr66e-t875+_q7vtn0e2(x2jdthgm6l$6rj='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['api.meiduo.site', '127.0.0.1', 'localhost', 'www.meiduo.site']
+ALLOWED_HOSTS = ['api.meiduo.site', '127.0.0.1', 'localhost', 'www.meiduo.site', 'www.moluo.net']
 # ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -228,7 +228,8 @@ CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:8080',
     'www.meiduo.site:8080',
-    'api.meiduo.site:8000'
+    'api.meiduo.site:8000',
+    'www.moluo.net:8080'
 )
 # 允许携带cookie
 CORS_ALLOW_CREDENTIALS = True
@@ -244,7 +245,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-QQ_CLIENT_ID = '101496203'
-QQ_CLIENT_SECRET = '69f2ad36bb6c84a15f45b01b7ee22aab'
-QQ_REDIRECT_URI = 'http://www.meiduo.site:8080/oauth_callback.html'
+QQ_CLIENT_ID = '101403367'
+QQ_CLIENT_SECRET = '93112df14c10d6fde74baa62f5de95ab'
+QQ_REDIRECT_URI = 'http://www.moluo.net:8080/oauth_callback.html'
 
