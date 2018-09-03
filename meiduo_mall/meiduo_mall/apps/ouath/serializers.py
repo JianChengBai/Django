@@ -73,11 +73,11 @@ class QQAuthUserSerializer(serializers.Serializer):
                 mobile=validated_data['mobile'],
 
             )
-            # 将用户绑定openid
-            OAuthQQUser.objects.create(
-                openid=validated_data['openid'],
-                user=user,
-            )
+        # 将用户绑定openid
+        OAuthQQUser.objects.create(
+            openid=validated_data['openid'],
+            user=user,
+        )
 
         # 返回数据
         return user

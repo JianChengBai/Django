@@ -46,16 +46,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
             }
         }
 
-    # def validate_username(self, value):
-    #
-    #     username = User.objects.get(value['username'])
-    #
-    #     if username:
-    #         return Response({'用户名已被注册'})
-    #     else:
-    #
-    #         return value
-
     def validate_mobile(self, value):
         """验证手机号"""
         if not re.match(r'^1[3-9]\d{9}$', value):
@@ -122,7 +112,15 @@ class CreateUserSerializer(serializers.ModelSerializer):
         return user
 
 
+class UserDetailSerializer(serializers.ModelSerializer):
+    """
+    用户详细信息序列化器
+    """
+    class Meta:
 
+        model = User
+
+        fields = ('id', 'username', 'mobile', 'email', 'email_active')
 
 
 

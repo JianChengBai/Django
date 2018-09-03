@@ -94,13 +94,13 @@ class QQAuthUserView(GenericAPIView):
         """openid绑定到用户"""
 
         # 获取序列化器对象
-        serializers = self.get_serializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
 
         # 开启校验
-        serializers.is_valid(raise_exception=True)
+        serializer.is_valid(raise_exception=True)
 
         # 保存校验结果，并接收
-        user = serializers.save()
+        user = serializer.save()
 
         # 生成JWT token， 并响应
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER

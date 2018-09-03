@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -55,3 +56,39 @@ class UserView(CreateAPIView):
     传入参数 username, password, password2, sms_code, mobile, allow
     """
     serializer_class = serializers.CreateUserSerializer
+
+
+class UserDetaiView(RetrieveAPIView):
+    """
+    用户详情
+    """
+    serializer_class = serializers.UserDetailSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+
+        return self.request.user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

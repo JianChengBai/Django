@@ -2,6 +2,8 @@ from django.conf import settings
 from itsdangerous import BadData
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
+from ouath import constants
+
 
 def generate_save_user_token(openid):
     """
@@ -24,7 +26,7 @@ def check_save_user_token(access_token):
     :param access_token: token
     :return: openid or None
     """
-    serializer = Serializer(settings.SECRET_KEY, 300)
+    serializer = Serializer(settings.SECRET_KEY, expires_in=constants.SAVE_QQ_USER_TOKEN_EXPIRES)
 
     try:
         data = serializer.loads(access_token)
