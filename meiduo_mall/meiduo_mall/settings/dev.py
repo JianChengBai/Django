@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'verifications.apps.VerificationsConfig',
     'users.apps.UsersConfig',
     'ouath.apps.OuathConfig',
+    'areas.apps.AreasConfig',
 
 ]
 
