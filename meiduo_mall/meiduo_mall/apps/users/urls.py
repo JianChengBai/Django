@@ -8,7 +8,9 @@ urlpatterns = [
     url(r'^mobiles/(?P<mobile>1[3-9]\d{9})/count/$', views.MobileCountView.as_view()),
     url(r'^users/$', views.UserView.as_view()),
     url(r'^authorizations/$', obtain_jwt_token),
-    url(r'^user/$', views.UserDetaiView.as_view()),
+    url(r'^user/$', views.UserDetaiView.as_view()), # 用户中心
+    url(r'^email/$', views.EmailView.as_view()), # 设置邮箱
+    url(r'^emails/verification/$', views.VerifyEmailView.as_view()), # 验证邮箱
 
 ]
 

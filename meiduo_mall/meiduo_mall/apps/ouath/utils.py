@@ -11,7 +11,7 @@ def generate_save_user_token(openid):
     :param openid: 用户的openid
     :return: token
     """
-    serializer = Serializer(settings.SECRET_KEY, 300)
+    serializer = Serializer(settings.SECRET_KEY, expires_in=constants.SAVE_QQ_USER_TOKEN_EXPIRES)
 
     data = {'openid': openid}
 

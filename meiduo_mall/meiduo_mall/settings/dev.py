@@ -224,6 +224,7 @@ REST_FRAMEWORK = {
 # 设置自定义模型类/User
 AUTH_USER_MODEL = 'users.User'
 
+# 添加白名单
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8080',
     'localhost:8080',
@@ -244,8 +245,22 @@ AUTHENTICATION_BACKENDS = [
     'users.utils.UsernameMobileAuthBackend',
 ]
 
-
+# QQAPI ID设置
 QQ_CLIENT_ID = '101403367'
 QQ_CLIENT_SECRET = '93112df14c10d6fde74baa62f5de95ab'
 QQ_REDIRECT_URI = 'http://www.moluo.net:8080/oauth_callback.html'
+
+# 邮箱配置信息
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+# 发送邮件的邮箱
+EMAIL_HOST_USER = '18898546349@163.com'
+# 在邮箱中设置的客户端授权密码
+EMAIL_HOST_PASSWORD = 'Google512236'
+
+# 收件人看到的发件人
+EMAIL_FROM = '美多商城<18898546349@163.com>'
+
+EMAIL_USE_TLS = False
 
