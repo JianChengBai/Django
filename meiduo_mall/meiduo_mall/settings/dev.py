@@ -265,3 +265,12 @@ EMAIL_FROM = '美多商城<18898546349@163.com>'
 
 EMAIL_USE_TLS = False
 
+# DRF扩展
+REST_FRAMEWORK_EXTENSIONS = {
+    # 缓存时间
+    'DEFAULT_CACHE_RESPONSE_TIMEOUT': 60 * 60,
+    # 缓存存储
+    'DEFAULT_USE_CACHE': 'default',
+}
+
+

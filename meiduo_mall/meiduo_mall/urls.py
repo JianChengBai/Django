@@ -22,6 +22,6 @@ urlpatterns = [
     url(r'^', include("verifications.urls")),
     url(r'^', include("users.urls")),
     url(r'^oauth/', include("ouath.urls")),
-    url(r'^areas/', include("areas.urls")),
+    url(r'^', include("areas.urls")),
 
 ]
