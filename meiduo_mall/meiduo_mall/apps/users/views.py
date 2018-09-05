@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
 
 from users import serializers, constants
-from users.models import User
+from users.models import User, Address
 
 
 class UsernameCountView(APIView):
