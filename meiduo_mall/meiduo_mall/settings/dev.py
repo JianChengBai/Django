@@ -43,11 +43,15 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'verifications.apps.VerificationsConfig',
     'users.apps.UsersConfig',
     'ouath.apps.OuathConfig',
     'areas.apps.AreasConfig',
+    'goods.apps.GoodsConfig',
+    'contents.apps.ContentsConfig',
 
 ]
 
@@ -247,9 +251,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # QQAPI ID设置
-QQ_CLIENT_ID = '101403367'
-QQ_CLIENT_SECRET = '93112df14c10d6fde74baa62f5de95ab'
-QQ_REDIRECT_URI = 'http://www.moluo.net:8080/oauth_callback.html'
+QQ_CLIENT_ID = '101502510'
+QQ_CLIENT_SECRET = '0a542e9beb61bb62ccafb793d97e9fc0'
+QQ_REDIRECT_URI = 'http://www.meiduo.site:8080/oauth_callback.html'
 
 # 邮箱配置信息
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -273,4 +277,12 @@ REST_FRAMEWORK_EXTENSIONS = {
     'DEFAULT_USE_CACHE': 'default',
 }
 
-
+# 富文本编辑器ckeditor配置
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',  # 工具条功能
+        'height': 300,  # 编辑器高度
+        # 'width': 300,  # 编辑器宽
+    },
+}
+CKEDITOR_UPLOAD_PATH = ''  # 上传图片保存路径，使用了FastDFS，所以此处设为''

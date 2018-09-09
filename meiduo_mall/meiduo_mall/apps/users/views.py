@@ -1,3 +1,4 @@
+from django.db.migrations import serializer
 from rest_framework import status, mixins
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView
@@ -182,10 +183,15 @@ class AddressViewSet(mixins.CreateModelMixin, mixins.UpdateModelMixin, GenericVi
         return Response(serializer.data)
 
 
+class PasswordSet(UpdateAPIView):
+    """
+    用户密码修改
+    """
+    permission_classes = [IsAuthenticated]
 
+    serializer_class = serializers.UserPasswordSerializer
 
-
-
+    
 
 
 

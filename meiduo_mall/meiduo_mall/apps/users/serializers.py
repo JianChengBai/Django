@@ -193,6 +193,43 @@ class AddressTitleSerializer(serializers.ModelSerializer):
         fields = ('title',)
 
 
+class UserPasswordSerializer(serializers.ModelSerializer):
+    """
+    用户密码修改
+    """
+    password2 = serializers.CharField(label='确认密码', write_only=True)
+
+    token = serializers.CharField(label='登录状态token', read_only=True)
+
+    class Meta:
+        model = User
+
+        fields = ('id', 'username', 'password', 'password2', 'token')
+
+        extra_kwargs = {
+
+            'password': {
+                'write_only': True,
+                'min_length': 8,
+                'max_length': 20,
+                'error_messages': {
+                    'min_length': '仅允许8-20个字符的密码',
+                    'max_length': '仅允许8-20个字符的密码',
+                }
+            }
+        }
+
+    def update(self, instance, validated_data):
+
+        # 判断两次密码
+        if validated_data['password'] != validated_data['password2']:
+            raise serializers.ValidationError('两次密码不一致')
+
+        password = validated_data['password2']
+        instance.password = password
+        instance.save()
+
+        return instance
 
 
 
